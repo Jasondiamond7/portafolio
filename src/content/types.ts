@@ -14,6 +14,11 @@ export type ProjectMetric = {
   unit?: string
 }
 
+export type ProjectMethodologyStep = {
+  title: string
+  detail: string
+}
+
 export type Project = {
   slug: string
   title: string
@@ -27,6 +32,12 @@ export type Project = {
   demoUrl?: string
   notebookUrl?: string
   featured: boolean
+  /** Long-form paragraphs for the detail page. Optional — omit to skip the section. */
+  narrative?: string[]
+  /** Ordered methodology steps shown on the detail page. Optional — omit to skip the section. */
+  methodology?: ProjectMethodologyStep[]
+  /** Bullet-style technical notes shown on the detail page. Optional — omit to skip the section. */
+  technicalNotes?: string[]
 }
 
 export type Certification = {
