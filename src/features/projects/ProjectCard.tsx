@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { Badge } from '@/components/ui/Badge'
 import type { Project } from '@/content/types'
 import { ProjectMetricsChart } from './ProjectMetricsChart'
@@ -6,7 +7,9 @@ export function ProjectCard({ project }: { project: Project }) {
   return (
     <article className="flex flex-col gap-5 rounded-xl border border-slate-200 p-6 dark:border-slate-800">
       <header>
-        <h3 className="text-lg font-semibold text-slate-900 dark:text-white">{project.title}</h3>
+        <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+          <Link to={`/projects/${project.slug}`}>{project.title}</Link>
+        </h3>
         <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">{project.summary}</p>
       </header>
 

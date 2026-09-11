@@ -23,6 +23,26 @@ export const projects: Project[] = [
     repoUrl: 'https://github.com/your-handle/churn-prediction',
     notebookUrl: 'https://nbviewer.org/github/your-handle/churn-prediction/blob/main/report.ipynb',
     featured: true,
+    narrative: [
+      // TODO: replace with the real case-study narrative.
+      'TODO: describe the business context and why churn prediction mattered here.',
+      'TODO: describe the modeling journey and the tradeoffs made along the way.',
+    ],
+    methodology: [
+      {
+        title: 'Data collection',
+        detail: 'TODO: describe how usage and billing data were gathered.',
+      },
+      {
+        title: 'Feature engineering',
+        detail: 'TODO: describe the engineered features and rationale.',
+      },
+      { title: 'Validation', detail: 'TODO: describe the time-based validation strategy.' },
+    ],
+    technicalNotes: [
+      'TODO: note the training infrastructure and runtime.',
+      'TODO: note how probabilities were calibrated for the retention team.',
+    ],
   },
   {
     slug: 'demand-forecasting',
@@ -41,6 +61,22 @@ export const projects: Project[] = [
     ],
     repoUrl: 'https://github.com/your-handle/demand-forecasting',
     featured: true,
+    narrative: [
+      'TODO: describe the business context and the cost of poor forecasts.',
+      'TODO: describe the reconciliation approach across store and chain levels.',
+    ],
+    methodology: [
+      { title: 'Baseline comparison', detail: 'TODO: describe the classical baselines evaluated.' },
+      { title: 'Feature design', detail: 'TODO: describe the lag/rolling features used.' },
+      {
+        title: 'Reconciliation',
+        detail: 'TODO: describe how forecasts were reconciled hierarchically.',
+      },
+    ],
+    technicalNotes: [
+      'TODO: note the forecasting cadence and retraining schedule.',
+      'TODO: note how the 400 SKU x 30 store scale was handled computationally.',
+    ],
   },
   {
     slug: 'support-ticket-triage',
@@ -60,6 +96,21 @@ export const projects: Project[] = [
     repoUrl: 'https://github.com/your-handle/ticket-triage',
     demoUrl: 'https://your-demo.example.com',
     featured: false,
+    narrative: [
+      'TODO: describe the business context and the delay caused by manual routing.',
+      'TODO: describe the confidence-threshold fallback design.',
+    ],
+    methodology: [
+      { title: 'Fine-tuning', detail: 'TODO: describe the transformer fine-tuning setup.' },
+      {
+        title: 'Confidence thresholding',
+        detail: 'TODO: describe how the human fallback threshold was chosen.',
+      },
+    ],
+    technicalNotes: [
+      'TODO: note the serving latency and infrastructure.',
+      'TODO: note how routing accuracy was measured in production.',
+    ],
   },
 ]
 

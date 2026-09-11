@@ -1,26 +1,25 @@
-# SDD Project Context — Proyecto-prueba
+# SDD Project Context — portafolio
 
-> Local fallback copy. The declared artifact store is **engram**, which was DOWN
-> (`CONNECTION_CLOSED`) during init. Re-run `sdd-init` (or persist manually) once
-> Engram reconnects so `sdd-init/Proyecto-prueba` exists in working memory.
+> Persisted to Engram under topic key `sdd-init/portafolio` (project `portafolio`).
+> This file is a local mirror for offline reference, not the source of truth.
 
 **Detected**: 2026-09-10
-**Persistence mode**: engram (declared) — save pending, backend unavailable
+**Persistence mode**: engram — saved (observation id 1)
 **Workspace root**: `C:/Users/Jason Leon/Desktop/Proyecto-prueba`
-**Git**: `main`, 3 commits, greenfield scaffold
+**Git**: `main`, clean working tree except `.atl/skill-registry.md` (modified, out of scope) and `.atl/.skill-registry.cache.json` (untracked, out of scope)
 **Strict TDD Mode**: enabled
 
 ## Project Type
 
 Single-package greenfield project. `package.json` `name` is `portfolio`
-(orchestrator project name: `Proyecto-prueba`). Personal portfolio site for a
-Data Science / ML / AI professional.
+(Engram-resolved project name: `portafolio`, resolved via git_remote). Personal
+portfolio site for a Data Science / ML / AI professional.
 
 ## Tech Stack (verified against files)
 
 | Concern         | Choice                                                                                         | Evidence                                                                                        |
-| --------------- | ---------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| Language        | TypeScript `~6.0.3`                                                                            | `package.json` devDependencies; `tsconfig.*.json`                                               |
+| --------------- | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------- |
+| Language        | TypeScript `~6.0.3`                                                                             | `package.json` devDependencies; `tsconfig.*.json`                                               |
 | UI framework    | React `^19.3.0` + react-dom `^19.3.0`                                                          | `package.json`; `jsx: react-jsx` in `tsconfig.app.json`                                         |
 | Build tool      | Vite `^8.3.0` (Rolldown-based; `rolldown` in node_modules)                                     | `vite.config.ts`, `package.json`                                                                |
 | Routing         | react-router-dom `^7.18.3` (`createBrowserRouter`, `Outlet`)                                   | `src/app/router.tsx`, `src/app/App.tsx`                                                         |
@@ -34,8 +33,8 @@ Data Science / ML / AI professional.
 ## Testing & Quality
 
 | Tool           | Command                                                                                             | Notes                                                                                                                                                |
-| -------------- | --------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Test runner    | `npm test` -> `vitest run` (`vitest ^5.0.0`)                                                        | `test:watch`, `test:coverage` also defined                                                                                                           |
+| -------------- | ------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Test runner    | `npm test` -> `vitest run` (`vitest ^5.0.0`)                                                        | `test:watch`, `test:coverage` also defined                                                                                                          |
 | Test env       | jsdom (`jsdom ^30`), `globals: true`, setup `src/test/setup.ts`                                     | `vite.config.ts` `test` block                                                                                                                        |
 | Integration/UI | `@testing-library/react ^16.3.3`, `@testing-library/jest-dom ^7`, `@testing-library/user-event ^14` | `src/test/setup.ts` imports jest-dom/vitest; ResizeObserver + matchMedia stubs                                                                       |
 | E2E            | none                                                                                                | no playwright/cypress                                                                                                                                |
@@ -45,7 +44,7 @@ Data Science / ML / AI professional.
 | Formatter      | `npm run format` / `format:check` -> `prettier` (`prettier ^3.9`)                                   | no explicit `.prettierrc` found (defaults)                                                                                                           |
 | Build          | `npm run build` -> `tsc -b && vite build`                                                           |                                                                                                                                                      |
 
-Existing tests (co-located `*.test.ts(x)`):
+Existing tests (co-located `*.test.ts(x)`), re-confirmed present on disk:
 `src/content/skills.test.ts`, `src/content/projects.test.ts`,
 `src/components/ui/ThemeToggle.test.tsx`. Pattern: pure logic tests on content
 modules + component behavior tests with Testing Library.
@@ -78,6 +77,27 @@ Conventions observed: named exports (no default exports) for components;
 
 ## Strict TDD Resolution
 
-Single project = workspace root. Explicit workspace-level command `npm test`
-(`vitest run`) covers the entire in-scope set, and the agent marker declares
-`Strict TDD Mode: enabled`. Result: **strict_tdd: true**.
+Single project = workspace root (only one `package.json` found in the tree,
+outside `node_modules`). Explicit workspace-level command `npm test`
+(`vitest run`) covers the entire in-scope set. Result: **strict_tdd: true**.
+
+## Session Preflight (cached for this SDD run)
+
+- Execution mode (Pace): automatic
+- Artifact store: engram
+- PR / delivery strategy: ask-on-risk
+
+## Persistence History
+
+- 2026-09-10 (session 1): sdd-init ran; Engram was DOWN (`CONNECTION_CLOSED`).
+  Wrote local fallback only to this file.
+- 2026-09-10 (session 2): Engram confirmed reachable. Re-verified all detected
+  facts above against the live repository (package.json scripts, config file
+  presence, test file presence, single-package-workspace claim). No drift
+  found. Persisted successfully to Engram (`sdd-init/portafolio`, observation
+  id 1, project `portafolio`).
+
+## Out-of-scope observations
+
+- `.atl/skill-registry.md` is currently modified and `.atl/.skill-registry.cache.json`
+  is untracked in git status. Not touched by this run; flagged for the user/orchestrator.

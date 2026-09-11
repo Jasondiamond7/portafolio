@@ -20,4 +20,24 @@ describe('projects content', () => {
     const slugs = projects.map((project) => project.slug)
     expect(new Set(slugs).size).toBe(slugs.length)
   })
+
+  it('populates narrative, methodology, and technicalNotes for every seed project', () => {
+    for (const project of projects) {
+      expect(Array.isArray(project.narrative)).toBe(true)
+      expect(project.narrative!.length).toBeGreaterThan(0)
+      expect(project.narrative!.every((paragraph) => typeof paragraph === 'string')).toBe(true)
+
+      expect(Array.isArray(project.methodology)).toBe(true)
+      expect(project.methodology!.length).toBeGreaterThan(0)
+      expect(
+        project.methodology!.every(
+          (step) => typeof step.title === 'string' && typeof step.detail === 'string',
+        ),
+      ).toBe(true)
+
+      expect(Array.isArray(project.technicalNotes)).toBe(true)
+      expect(project.technicalNotes!.length).toBeGreaterThan(0)
+      expect(project.technicalNotes!.every((note) => typeof note === 'string')).toBe(true)
+    }
+  })
 })
