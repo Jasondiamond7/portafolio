@@ -29,3 +29,23 @@ Object.defineProperty(window, 'matchMedia', {
     dispatchEvent: vi.fn(),
   }),
 })
+
+// jsdom doesn't implement the canvas 2D context. NeuralNetworkBackground (and
+// anything else that mounts a <canvas>) needs at least a no-op mock so
+// `getContext('2d')` doesn't return null and drawing calls don't throw.
+Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
+  writable: true,
+  value: vi.fn(() => {
+    const context: Record<string, unknown> = {}
+    return new Proxy(context, {
+      get(target, prop) {
+        if (prop in target) return target[prop as string]
+        return vi.fn()
+      },
+      set(target, prop, value) {
+        target[prop as string] = value
+        return true
+      },
+    })
+  }),
+})
