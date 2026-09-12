@@ -25,9 +25,9 @@ export function SkillsRadar() {
           <Radar
             name="Proficiency"
             dataKey="level"
-            stroke="var(--color-brand-600)"
-            fill="var(--color-brand-500)"
-            fillOpacity={0.4}
+            stroke="var(--color-primary)"
+            fill="var(--color-primary)"
+            fillOpacity={0.3}
           />
         </RadarChart>
       </ResponsiveContainer>

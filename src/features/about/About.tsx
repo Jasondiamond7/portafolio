@@ -25,7 +25,7 @@ export function About() {
                   href={cert.credentialUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-brand-600 hover:underline dark:text-brand-300"
+                  className="text-primary hover:underline"
                 >
                   Verify
                 </a>

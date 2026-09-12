@@ -36,8 +36,8 @@ export function ModelPerformanceChart() {
             className={cn(
               'rounded-lg px-3 py-1.5 text-sm font-medium',
               view === tab.id
-                ? 'bg-brand-600 text-white'
-                : 'border border-slate-300 text-slate-700 dark:border-slate-600 dark:text-slate-300',
+                ? 'bg-primary text-white'
+                : 'border border-border text-text-secondary',
             )}
           >
             {tab.label}
@@ -67,7 +67,7 @@ export function ModelPerformanceChart() {
                 type="monotone"
                 dataKey="trainLoss"
                 name="Train loss"
-                stroke="var(--color-brand-500)"
+                stroke="var(--color-primary)"
                 strokeWidth={2}
                 dot={false}
               />
@@ -75,7 +75,7 @@ export function ModelPerformanceChart() {
                 type="monotone"
                 dataKey="valLoss"
                 name="Val loss"
-                stroke="#f97316"
+                stroke="var(--color-accent)"
                 strokeWidth={2}
                 dot={false}
               />
@@ -115,7 +115,7 @@ export function ModelPerformanceChart() {
                 type="monotone"
                 dataKey="tpr"
                 name={`ROC (AUC ${rocAuc})`}
-                stroke="var(--color-brand-500)"
+                stroke="var(--color-primary)"
                 strokeWidth={2}
                 dot={false}
               />

@@ -15,15 +15,21 @@ export function ProjectCard({ project }: { project: Project }) {
 
       <dl className="space-y-2 text-sm">
         <div>
-          <dt className="font-medium text-slate-900 dark:text-white">Problem</dt>
+          <dt className="text-xs font-semibold tracking-wide text-text-secondary uppercase">
+            Problem
+          </dt>
           <dd className="text-slate-600 dark:text-slate-400">{project.problem}</dd>
         </div>
         <div>
-          <dt className="font-medium text-slate-900 dark:text-white">Approach</dt>
+          <dt className="text-xs font-semibold tracking-wide text-text-secondary uppercase">
+            Approach
+          </dt>
           <dd className="text-slate-600 dark:text-slate-400">{project.approach}</dd>
         </div>
-        <div>
-          <dt className="font-medium text-slate-900 dark:text-white">Outcome</dt>
+        <div className="border-l-2 border-primary pl-3">
+          <dt className="text-xs font-semibold tracking-wide text-text-secondary uppercase">
+            Outcome
+          </dt>
           <dd className="text-slate-600 dark:text-slate-400">{project.outcome}</dd>
         </div>
       </dl>
@@ -42,7 +48,7 @@ export function ProjectCard({ project }: { project: Project }) {
             href={project.repoUrl}
             target="_blank"
             rel="noreferrer"
-            className="text-brand-600 hover:underline dark:text-brand-300"
+            className="text-primary hover:underline"
           >
             Code
           </a>
@@ -52,7 +58,7 @@ export function ProjectCard({ project }: { project: Project }) {
             href={project.demoUrl}
             target="_blank"
             rel="noreferrer"
-            className="text-brand-600 hover:underline dark:text-brand-300"
+            className="text-primary hover:underline"
           >
             Live demo
           </a>
@@ -62,7 +68,7 @@ export function ProjectCard({ project }: { project: Project }) {
             href={project.notebookUrl}
             target="_blank"
             rel="noreferrer"
-            className="text-brand-600 hover:underline dark:text-brand-300"
+            className="text-primary hover:underline"
           >
             Notebook
           </a>
