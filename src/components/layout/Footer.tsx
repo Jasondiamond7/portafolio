@@ -3,8 +3,8 @@ import { Container } from './Container'
 
 export function Footer() {
   return (
-    <footer className="border-t border-slate-200 py-10 dark:border-slate-800">
-      <Container className="flex flex-col items-center justify-between gap-4 text-sm text-slate-500 sm:flex-row dark:text-slate-400">
+    <footer className="border-t border-border bg-surface-alt py-10">
+      <Container className="flex flex-col items-center justify-between gap-4 text-sm text-text-secondary sm:flex-row">
         <p>
           © {new Date().getFullYear()} {profile.name}. Built with React, Vite, Tailwind and
           Recharts.

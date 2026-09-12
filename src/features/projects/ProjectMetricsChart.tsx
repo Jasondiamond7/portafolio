@@ -49,7 +49,7 @@ export function ProjectMetricsChart({ metrics }: { metrics: ProjectMetric[] }) {
           />
           <Bar dataKey="pct" radius={4} maxBarSize={22}>
             {data.map((entry) => (
-              <Cell key={entry.label} fill="var(--color-brand-500)" />
+              <Cell key={entry.label} fill="var(--color-primary)" />
             ))}
             <LabelList
               dataKey="labelText"

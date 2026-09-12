@@ -6,7 +6,7 @@ export function Hero() {
   return (
     <section id="top" className="py-20 sm:py-28">
       <Container>
-        <p className="font-mono text-sm text-brand-600 dark:text-brand-300">{profile.role}</p>
+        <p className="font-mono text-sm text-primary">{profile.role}</p>
         <h1 className="mt-4 max-w-3xl text-4xl font-bold tracking-tight text-slate-900 sm:text-6xl dark:text-white">
           {profile.tagline}
         </h1>
