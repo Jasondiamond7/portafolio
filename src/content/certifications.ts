@@ -3,7 +3,7 @@ import type { Certification } from './types'
 // TODO: replace with your real credentials. Put the diploma first.
 export const certifications: Certification[] = [
   {
-    name: 'Postgraduate Diploma in Data Science',
+    name: 'Diplomado Universidad Catolica Data Science ',
     issuer: 'Your University',
     year: 2025,
     credentialUrl: 'https://example.com/credential',
