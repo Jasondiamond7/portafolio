@@ -8,13 +8,13 @@ export function ProjectDetail({ project }: { project: Project }) {
   return (
     <Container className="py-16 sm:py-24">
       <Link to="/#projects" className="text-sm text-primary hover:underline">
-        ← Back to projects
+        ← Volver a proyectos
       </Link>
 
       <h1 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
         {project.title}
       </h1>
-      <p className="mt-3 max-w-2xl text-slate-600 dark:text-slate-400">{project.summary}</p>
+      <p className="mt-3 max-w-2xl text-lg text-slate-600 dark:text-slate-400">{project.summary}</p>
 
       <div className="mt-4 flex flex-wrap gap-2">
         {project.tags.map((tag) => (
@@ -22,22 +22,67 @@ export function ProjectDetail({ project }: { project: Project }) {
         ))}
       </div>
 
-      <dl className="mt-8 space-y-4 text-sm">
+      {project.media && project.media.length > 0 ? (
+        <div className="mt-8 space-y-6">
+          {project.media.map((item, index) =>
+            item.type === 'video' ? (
+              <figure key={index}>
+                <video
+                  controls
+                  playsInline
+                  poster={item.poster}
+                  className="w-full rounded-xl border border-slate-200 dark:border-slate-800"
+                >
+                  <source src={item.src} type="video/mp4" />
+                </video>
+                {item.caption ? (
+                  <figcaption className="mt-2 text-sm text-text-secondary">
+                    {item.caption}
+                  </figcaption>
+                ) : null}
+              </figure>
+            ) : null,
+          )}
+
+          {project.media.some((item) => item.type === 'image') ? (
+            <div className="grid gap-6 sm:grid-cols-2">
+              {project.media.map((item, index) =>
+                item.type === 'image' ? (
+                  <figure key={index}>
+                    <img
+                      src={item.src}
+                      alt={item.alt}
+                      className="w-full rounded-xl border border-slate-200 dark:border-slate-800"
+                    />
+                    {item.caption ? (
+                      <figcaption className="mt-2 text-sm text-text-secondary">
+                        {item.caption}
+                      </figcaption>
+                    ) : null}
+                  </figure>
+                ) : null,
+              )}
+            </div>
+          ) : null}
+        </div>
+      ) : null}
+
+      <dl className="mt-8 space-y-4 text-base">
         <div>
           <dt className="text-xs font-semibold tracking-wide text-text-secondary uppercase">
-            Problem
+            Problema
           </dt>
           <dd className="text-slate-600 dark:text-slate-400">{project.problem}</dd>
         </div>
         <div>
           <dt className="text-xs font-semibold tracking-wide text-text-secondary uppercase">
-            Approach
+            Enfoque
           </dt>
           <dd className="text-slate-600 dark:text-slate-400">{project.approach}</dd>
         </div>
         <div className="border-l-2 border-primary pl-3">
           <dt className="text-xs font-semibold tracking-wide text-text-secondary uppercase">
-            Outcome
+            Resultado
           </dt>
           <dd className="text-slate-600 dark:text-slate-400">{project.outcome}</dd>
         </div>
@@ -49,7 +94,7 @@ export function ProjectDetail({ project }: { project: Project }) {
 
       {project.narrative && project.narrative.length > 0 ? (
         <section className="mt-10">
-          <h2 className="text-xl font-semibold text-slate-900 dark:text-white">Narrative</h2>
+          <h2 className="text-xl font-semibold text-slate-900 dark:text-white">Narrativa</h2>
           <div className="mt-3 space-y-3 text-slate-600 dark:text-slate-400">
             {project.narrative.map((paragraph, index) => (
               <p key={index}>{paragraph}</p>
@@ -60,7 +105,7 @@ export function ProjectDetail({ project }: { project: Project }) {
 
       {project.methodology && project.methodology.length > 0 ? (
         <section className="mt-10">
-          <h2 className="text-xl font-semibold text-slate-900 dark:text-white">Methodology</h2>
+          <h2 className="text-xl font-semibold text-slate-900 dark:text-white">Metodología</h2>
           <div className="mt-3 space-y-4">
             {project.methodology.map((step) => (
               <div key={step.title}>
@@ -74,7 +119,7 @@ export function ProjectDetail({ project }: { project: Project }) {
 
       {project.technicalNotes && project.technicalNotes.length > 0 ? (
         <section className="mt-10">
-          <h2 className="text-xl font-semibold text-slate-900 dark:text-white">Technical Notes</h2>
+          <h2 className="text-xl font-semibold text-slate-900 dark:text-white">Notas técnicas</h2>
           <ul className="mt-3 list-disc space-y-1 pl-5 text-slate-600 dark:text-slate-400">
             {project.technicalNotes.map((note) => (
               <li key={note}>{note}</li>

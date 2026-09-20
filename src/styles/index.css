@@ -15,6 +15,7 @@
   --color-surface-alt: #f4f6f5;
   --color-border: #e2e8e6;
   --color-text-secondary: #5b6b68;
+  --color-screen-bezel: #334155;
 }
 
 :root {
@@ -29,6 +30,7 @@
   --color-surface-alt: #111827;
   --color-border: #1f2c2a;
   --color-text-secondary: #9fb0ac;
+  --color-screen-bezel: #334155;
 }
 
 html {

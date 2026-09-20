@@ -15,6 +15,19 @@ class ResizeObserverStub {
 
 vi.stubGlobal('ResizeObserver', ResizeObserverStub)
 
+// framer-motion's `whileInView` and the header's active-section tracking both
+// need IntersectionObserver, which jsdom lacks.
+class IntersectionObserverStub {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+  takeRecords() {
+    return []
+  }
+}
+
+vi.stubGlobal('IntersectionObserver', IntersectionObserverStub)
+
 // matchMedia is used by the theme provider.
 Object.defineProperty(window, 'matchMedia', {
   writable: true,

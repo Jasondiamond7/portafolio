@@ -18,7 +18,7 @@ describe('ProjectDetailPage', () => {
     for (const note of project.technicalNotes ?? []) {
       expect(screen.getByText(note)).toBeInTheDocument()
     }
-    expect(screen.getByRole('link', { name: /back to projects/i })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: /volver a proyectos/i })).toHaveAttribute(
       'href',
       '/#projects',
     )
