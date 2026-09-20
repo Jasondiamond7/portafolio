@@ -16,6 +16,8 @@ type Colors = {
 
 const BASE_NODE_COUNT = 55
 const SMALL_VIEWPORT_NODE_COUNT = 28
+const AMBIENT_NODE_COUNT = 16
+const AMBIENT_SMALL_VIEWPORT_NODE_COUNT = 10
 const SMALL_VIEWPORT_WIDTH = 640
 const CONNECTION_DISTANCE = 140
 const MOUSE_RADIUS = 160
@@ -55,8 +57,17 @@ function hexToRgba(hex: string, alpha: number): string {
   return `rgba(${r}, ${g}, ${b}, ${alpha})`
 }
 
-function createNodes(width: number, height: number): NetworkNode[] {
-  const count = width < SMALL_VIEWPORT_WIDTH ? SMALL_VIEWPORT_NODE_COUNT : BASE_NODE_COUNT
+type Intensity = 'active' | 'ambient'
+
+function createNodes(width: number, height: number, intensity: Intensity): NetworkNode[] {
+  const count =
+    intensity === 'ambient'
+      ? width < SMALL_VIEWPORT_WIDTH
+        ? AMBIENT_SMALL_VIEWPORT_NODE_COUNT
+        : AMBIENT_NODE_COUNT
+      : width < SMALL_VIEWPORT_WIDTH
+        ? SMALL_VIEWPORT_NODE_COUNT
+        : BASE_NODE_COUNT
   const nodes: NetworkNode[] = []
   for (let i = 0; i < count; i += 1) {
     nodes.push({
@@ -74,9 +85,11 @@ function createNodes(width: number, height: number): NetworkNode[] {
 /**
  * Decorative, mouse-reactive neural-network canvas rendered behind the Hero
  * content. Purely visual: it is `pointer-events-none` so it never intercepts
- * clicks or text selection meant for the real content stacked above it.
+ * clicks or text selection meant for the real content stacked above it. Pass
+ * `intensity="ambient"` for a sparser, non-mouse-reactive variant suited to
+ * a faint background behind other sections.
  */
-export function NeuralNetworkBackground() {
+export function NeuralNetworkBackground({ intensity = 'active' }: { intensity?: Intensity } = {}) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
   useEffect(() => {
@@ -199,7 +212,7 @@ export function NeuralNetworkBackground() {
       canvas.style.width = `${width}px`
       canvas.style.height = `${height}px`
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
-      nodes = createNodes(width, height)
+      nodes = createNodes(width, height, intensity)
       // Redraw immediately when there is no active rAF loop (initial mount,
       // or a resize while reduced-motion keeps the canvas static) so the
       // canvas never shows a stale frame after a layout change.
@@ -238,8 +251,10 @@ export function NeuralNetworkBackground() {
     resizeObserver.observe(parent)
 
     resize()
-    parent.addEventListener('mousemove', handleMouseMove)
-    parent.addEventListener('mouseleave', handleMouseLeave)
+    if (intensity === 'active') {
+      parent.addEventListener('mousemove', handleMouseMove)
+      parent.addEventListener('mouseleave', handleMouseLeave)
+    }
     reducedMotionQuery.addEventListener('change', handleReducedMotionChange)
     start()
 
@@ -247,11 +262,13 @@ export function NeuralNetworkBackground() {
       stop()
       resizeObserver.disconnect()
       colorObserver.disconnect()
-      parent.removeEventListener('mousemove', handleMouseMove)
-      parent.removeEventListener('mouseleave', handleMouseLeave)
+      if (intensity === 'active') {
+        parent.removeEventListener('mousemove', handleMouseMove)
+        parent.removeEventListener('mouseleave', handleMouseLeave)
+      }
       reducedMotionQuery.removeEventListener('change', handleReducedMotionChange)
     }
-  }, [])
+  }, [intensity])
 
   return (
     <canvas

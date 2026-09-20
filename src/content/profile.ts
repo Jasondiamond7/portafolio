@@ -1,20 +1,20 @@
 import type { Profile } from './types'
 
-// TODO: replace placeholder values with your real information.
+// TODO: reemplaza los valores de ejemplo con tu información real.
 export const profile: Profile = {
-  name: 'Your Name',
-  role: 'Data Scientist · Machine Learning · AI',
-  tagline: 'I turn messy data into models that ship and decisions that hold up.',
-  location: 'Remote · LATAM',
-  email: 'you@example.com',
+  name: 'Jason Leon',
+  role: 'Automatización, Datos e IA',
+  tagline: 'Automatizo, analizo datos y aplico IA a problemas reales.',
+  location: 'Remoto · LATAM',
+  email: 'jasonleonmartinez@gmail.com',
+  whatsapp: 'https://wa.me/56931290880',
   summary:
-    'Data Science, ML and AI practitioner with a postgraduate diploma in Data Science. ' +
-    'I work end to end: framing the problem, building and validating models, and putting ' +
-    'them in front of users with clear, honest visualizations.',
+    'Vengo del mundo de la automatización y los datos, y hoy sumo cada vez más Data Science, ' +
+    'Machine Learning e IA. En el día a día trabajo con Python, SQL, Playwright y Selenium, ' +
+    'y despliego todo sobre Docker y Digital Ocean.',
   socials: [
-    { label: 'GitHub', url: 'https://github.com/your-handle' },
-    { label: 'LinkedIn', url: 'https://linkedin.com/in/your-handle' },
-    { label: 'Kaggle', url: 'https://kaggle.com/your-handle' },
+    { label: 'GitHub', url: 'https://github.com/Jasondiamond7' },
+    { label: 'LinkedIn', url: 'https://www.linkedin.com/in/jayssonlm/' },
   ],
   resumeUrl: '/resume.pdf',
 }

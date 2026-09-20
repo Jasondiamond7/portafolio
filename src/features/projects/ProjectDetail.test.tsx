@@ -34,9 +34,9 @@ describe('ProjectDetail', () => {
       screen.getByRole('heading', { level: 1, name: minimalFixture.title }),
     ).toBeInTheDocument()
     expect(screen.getByText(minimalFixture.summary)).toBeInTheDocument()
-    expect(screen.queryByText('Narrative')).not.toBeInTheDocument()
-    expect(screen.queryByText('Methodology')).not.toBeInTheDocument()
-    expect(screen.queryByText('Technical Notes')).not.toBeInTheDocument()
+    expect(screen.queryByText('Narrativa')).not.toBeInTheDocument()
+    expect(screen.queryByText('Metodología')).not.toBeInTheDocument()
+    expect(screen.queryByText('Notas técnicas')).not.toBeInTheDocument()
   })
 
   it('renders narrative, methodology, and technical notes when populated', () => {
@@ -53,7 +53,7 @@ describe('ProjectDetail', () => {
   it('offers a back link to the homepage projects section', () => {
     renderWithRouter(<ProjectDetail project={minimalFixture} />)
 
-    expect(screen.getByRole('link', { name: /back to projects/i })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: /volver a proyectos/i })).toHaveAttribute(
       'href',
       '/#projects',
     )

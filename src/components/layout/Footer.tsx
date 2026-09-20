@@ -6,7 +6,7 @@ export function Footer() {
     <footer className="border-t border-border bg-surface-alt py-10">
       <Container className="flex flex-col items-center justify-between gap-4 text-sm text-text-secondary sm:flex-row">
         <p>
-          © {new Date().getFullYear()} {profile.name}. Built with React, Vite, Tailwind and
+          © {new Date().getFullYear()} {profile.name}. Construido con React, Vite, Tailwind y
           Recharts.
         </p>
         <ul className="flex gap-4">

@@ -18,11 +18,11 @@ describe('ThemeToggle', () => {
     renderToggle()
 
     expect(document.documentElement).not.toHaveClass('dark')
-    const button = screen.getByRole('button', { name: /dark theme/i })
+    const button = screen.getByRole('button', { name: /tema oscuro/i })
 
     await user.click(button)
 
     expect(document.documentElement).toHaveClass('dark')
-    expect(screen.getByRole('button', { name: /light theme/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /tema claro/i })).toBeInTheDocument()
   })
 })

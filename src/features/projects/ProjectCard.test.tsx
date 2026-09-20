@@ -27,17 +27,24 @@ describe('ProjectCard', () => {
     expect(link).toHaveAttribute('href', '/projects/test-project')
   })
 
-  it('still renders the existing footer links and problem/approach/outcome content', () => {
+  it('renders a compact teaser: summary, tags, a link to the full case, and the repo icon', () => {
     renderWithRouter(<ProjectCard project={fixture} />)
 
-    expect(screen.getByText(fixture.problem)).toBeInTheDocument()
-    expect(screen.getByText(fixture.approach)).toBeInTheDocument()
-    expect(screen.getByText(fixture.outcome)).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: 'Code' })).toHaveAttribute('href', fixture.repoUrl)
-    expect(screen.getByRole('link', { name: 'Live demo' })).toHaveAttribute('href', fixture.demoUrl)
-    expect(screen.getByRole('link', { name: 'Notebook' })).toHaveAttribute(
+    expect(screen.getByText(fixture.summary)).toBeInTheDocument()
+    expect(screen.getByText('Tag A')).toBeInTheDocument()
+    expect(screen.getByText('Tag B')).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /ver caso completo/i })).toHaveAttribute(
       'href',
-      fixture.notebookUrl,
+      '/projects/test-project',
     )
+    expect(screen.getByRole('link', { name: 'Ver código en GitHub' })).toHaveAttribute(
+      'href',
+      fixture.repoUrl,
+    )
+
+    // the full problem/approach/outcome breakdown now lives only on the detail page
+    expect(screen.queryByText(fixture.problem)).not.toBeInTheDocument()
+    expect(screen.queryByText(fixture.approach)).not.toBeInTheDocument()
+    expect(screen.queryByText(fixture.outcome)).not.toBeInTheDocument()
   })
 })

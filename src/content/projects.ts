@@ -1,115 +1,125 @@
 import type { Project } from './types'
 
-// TODO: replace with your real case studies. Keep the problem/approach/outcome
-// structure — recruiters skim it fast.
+// Ejemplos de portafolio con tu stack real (Playwright, Selenium, Python, SQL, MCP,
+// Docker, Digital Ocean, SSH). Los textos y métricas son ilustrativos — reemplázalos
+// por tus proyectos y números reales cuando los tengas. Mantén la estructura
+// problema/enfoque/resultado — se lee rápido.
 export const projects: Project[] = [
   {
-    slug: 'churn-prediction',
-    title: 'Customer Churn Prediction',
-    summary: 'Gradient-boosted model that flags at-risk subscribers a month ahead.',
+    slug: 'framework-pruebas-ia',
+    title: 'Framework de Automatización de Pruebas asistido por IA',
+    summary:
+      'Suite de pruebas end-to-end con Playwright y Selenium, potenciada con un agente de IA vía MCP que genera y mantiene casos de prueba automáticamente.',
     problem:
-      'A subscription business was losing customers with no early warning, so retention offers arrived too late.',
+      'Los equipos de QA dedicaban demasiado tiempo a escribir y mantener casos de prueba manuales, con baja cobertura sobre los flujos más críticos del producto.',
     approach:
-      'Built features from usage logs and billing history, trained LightGBM with time-based validation, ' +
-      'and calibrated probabilities for the retention team.',
+      'Diseñé un framework de pruebas E2E en Python con Playwright y Selenium, y lo conecté a un servidor MCP ' +
+      'para que un agente de IA pudiera generar, priorizar y actualizar casos de prueba a partir de los flujos ' +
+      'reales de la aplicación, en lugar de mantenerlos a mano.',
     outcome:
-      'AUC 0.89 on a held-out month. Targeted campaigns on the top decile recovered an estimated 12% of would-be churners.',
-    tags: ['LightGBM', 'Feature Engineering', 'Calibration', 'FastAPI'],
+      'La cobertura de flujos críticos pasó de ser prácticamente inexistente a un 85%, y el tiempo dedicado ' +
+      'a mantener pruebas rotas bajó cerca de un 30% al delegar esa tarea al agente.',
+    tags: ['Playwright', 'Selenium', 'Python', 'MCP'],
     metrics: [
-      { label: 'ROC AUC', value: 0.89 },
-      { label: 'Precision @ top 10%', value: 0.64 },
-      { label: 'Recall @ top 10%', value: 0.41 },
+      { label: 'Cobertura de flujos críticos', value: 85, unit: '%' },
+      { label: 'Reducción de mantenimiento', value: 30, unit: '%' },
     ],
-    repoUrl: 'https://github.com/your-handle/churn-prediction',
-    notebookUrl: 'https://nbviewer.org/github/your-handle/churn-prediction/blob/main/report.ipynb',
+    repoUrl: 'https://github.com/tu-usuario/framework-pruebas-ia',
     featured: true,
+    media: [
+      {
+        type: 'video',
+        src: '/videos/projects/allure-report-demo.mp4',
+        poster: '/images/projects/allure-report-poster.jpg',
+        caption:
+          'TODO: describe qué se ve en el video (ej. corrida de la suite y recorrido por el reporte de Allure).',
+      },
+    ],
     narrative: [
-      // TODO: replace with the real case-study narrative.
-      'TODO: describe the business context and why churn prediction mattered here.',
-      'TODO: describe the modeling journey and the tradeoffs made along the way.',
+      'El equipo de QA venía creciendo más rápido que su capacidad de escribir pruebas: cada release nuevo ' +
+        'sumaba flujos sin cobertura y los casos existentes se volvían obsoletos apenas cambiaba la interfaz.',
+      'En vez de sumar más gente escribiendo pruebas a mano, integré un agente de IA que consulta el estado ' +
+        'real de la aplicación a través de un servidor MCP y propone, actualiza y prioriza los casos de prueba, ' +
+        'dejando al equipo enfocado en revisar y validar en vez de escribir desde cero.',
     ],
     methodology: [
       {
-        title: 'Data collection',
-        detail: 'TODO: describe how usage and billing data were gathered.',
+        title: 'Diseño del framework',
+        detail:
+          'Page Objects reutilizables en Playwright y Selenium, con fixtures compartidas y ejecución en paralelo para mantener el feedback rápido.',
       },
       {
-        title: 'Feature engineering',
-        detail: 'TODO: describe the engineered features and rationale.',
+        title: 'Integración con MCP',
+        detail:
+          'Un servidor MCP expone los flujos de la aplicación y el historial de fallos como herramientas, para que el agente de IA decida qué casos generar o actualizar.',
       },
-      { title: 'Validation', detail: 'TODO: describe the time-based validation strategy.' },
+      {
+        title: 'Despliegue',
+        detail:
+          'La suite corre en contenedores Docker dentro de un pipeline de CI, con los resultados publicados apenas termina cada corrida.',
+      },
     ],
     technicalNotes: [
-      'TODO: note the training infrastructure and runtime.',
-      'TODO: note how probabilities were calibrated for the retention team.',
+      'La suite completa corre en Docker sobre un droplet de Digital Ocean, administrado por SSH.',
+      'Todo caso generado por el agente pasa por una revisión humana antes de entrar a la suite principal.',
     ],
   },
   {
-    slug: 'demand-forecasting',
-    title: 'Retail Demand Forecasting',
-    summary: 'Hierarchical forecasts for 400 SKUs across 30 stores.',
+    slug: 'proyecto-diplomado-data-science',
+    title: 'Proyecto Final — Diplomado en Ciencia de Datos',
+    // TODO: reemplaza summary/problem/approach/outcome con los de tu proyecto real de cierre.
+    summary: 'TODO: resume en una línea qué predices o analizas y con qué datos.',
     problem:
-      'Manual spreadsheet forecasts caused stockouts on fast movers and waste on perishables.',
+      'TODO: describe el problema o pregunta de negocio que aborda tu proyecto de diplomado.',
     approach:
-      'Compared classical (ETS, ARIMA) against LightGBM with lag/rolling features; reconciled ' +
-      'store-level and chain-level forecasts.',
-    outcome: 'Cut weighted MAPE from 34% to 19% versus the incumbent baseline.',
-    tags: ['Time Series', 'LightGBM', 'Forecast Reconciliation'],
-    metrics: [
-      { label: 'Baseline MAPE', value: 34, unit: '%' },
-      { label: 'Model MAPE', value: 19, unit: '%' },
-    ],
-    repoUrl: 'https://github.com/your-handle/demand-forecasting',
-    featured: true,
-    narrative: [
-      'TODO: describe the business context and the cost of poor forecasts.',
-      'TODO: describe the reconciliation approach across store and chain levels.',
-    ],
-    methodology: [
-      { title: 'Baseline comparison', detail: 'TODO: describe the classical baselines evaluated.' },
-      { title: 'Feature design', detail: 'TODO: describe the lag/rolling features used.' },
-      {
-        title: 'Reconciliation',
-        detail: 'TODO: describe how forecasts were reconciled hierarchically.',
-      },
-    ],
-    technicalNotes: [
-      'TODO: note the forecasting cadence and retraining schedule.',
-      'TODO: note how the 400 SKU x 30 store scale was handled computationally.',
-    ],
-  },
-  {
-    slug: 'support-ticket-triage',
-    title: 'Support Ticket Triage (NLP)',
-    summary: 'Transformer classifier that routes tickets to the right queue.',
-    problem: 'Support tickets were routed by hand, adding hours of first-response delay.',
-    approach:
-      'Fine-tuned a compact transformer on labeled historical tickets; added a confidence ' +
-      'threshold with human fallback for low-certainty cases.',
+      'TODO: describe tu enfoque — el dataset usado, la limpieza/preprocesamiento aplicado y el o los modelos que entrenaste, y por qué los elegiste.',
     outcome:
-      'Auto-routed 71% of tickets with 94% routing accuracy; median first response down 3.2 hours.',
-    tags: ['NLP', 'Transformers', 'Active Learning'],
+      'TODO: reemplaza con el resultado real (tu métrica principal, ej. accuracy, R² o AUC, y qué significa en términos simples).',
+    tags: ['Python', 'Pandas', 'NumPy', 'Scikit-learn', 'Matplotlib'],
     metrics: [
-      { label: 'Coverage', value: 71, unit: '%' },
-      { label: 'Routing accuracy', value: 94, unit: '%' },
+      { label: 'TODO: métrica principal (ej. Accuracy)', value: 0, unit: '%' },
+      { label: 'TODO: métrica secundaria (ej. F1-score)', value: 0 },
     ],
-    repoUrl: 'https://github.com/your-handle/ticket-triage',
-    demoUrl: 'https://your-demo.example.com',
-    featured: false,
+    notebookUrl: 'https://nbviewer.org/github/tu-usuario/tu-repo/blob/main/notebook.ipynb',
+    repoUrl: 'https://github.com/tu-usuario/proyecto-diplomado-data-science',
+    featured: true,
+    media: [
+      {
+        type: 'image',
+        src: '/images/projects/ds-diplomado-chart-1.png',
+        alt: 'TODO: describe este gráfico (ej. matriz de correlación entre variables)',
+        caption: 'TODO: título del gráfico 1 (ej. "Matriz de correlación")',
+      },
+      {
+        type: 'image',
+        src: '/images/projects/ds-diplomado-chart-2.png',
+        alt: 'TODO: describe este gráfico (ej. importancia de variables del modelo)',
+        caption: 'TODO: título del gráfico 2 (ej. "Importancia de variables")',
+      },
+    ],
     narrative: [
-      'TODO: describe the business context and the delay caused by manual routing.',
-      'TODO: describe the confidence-threshold fallback design.',
+      'TODO: cuenta el contexto del diplomado y por qué elegiste este dataset o problema en particular.',
+      'TODO: cuenta qué fue lo más desafiante del proceso y qué aprendiste.',
     ],
     methodology: [
-      { title: 'Fine-tuning', detail: 'TODO: describe the transformer fine-tuning setup.' },
       {
-        title: 'Confidence thresholding',
-        detail: 'TODO: describe how the human fallback threshold was chosen.',
+        title: 'Exploración de datos (EDA)',
+        detail:
+          'TODO: describe el análisis exploratorio — qué patrones o problemas encontraste en los datos.',
+      },
+      {
+        title: 'Preprocesamiento',
+        detail: 'TODO: describe la limpieza, el feature engineering y el manejo de nulos/outliers.',
+      },
+      {
+        title: 'Modelado y evaluación',
+        detail:
+          'TODO: describe qué modelos probaste, cómo los comparaste y por qué elegiste el final.',
       },
     ],
     technicalNotes: [
-      'TODO: note the serving latency and infrastructure.',
-      'TODO: note how routing accuracy was measured in production.',
+      'TODO: menciona el entorno usado (Jupyter, Google Colab, etc.) y las librerías clave.',
+      'TODO: menciona cualquier limitación conocida del modelo o de los datos.',
     ],
   },
 ]
