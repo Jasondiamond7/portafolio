@@ -60,6 +60,8 @@ export type Certification = {
   issuer: string
   year: number
   credentialUrl?: string
+  /** Set when the certification hasn't been issued yet — shows "En curso" instead of a link. */
+  inProgress?: boolean
 }
 
 export type WorkExperience = {

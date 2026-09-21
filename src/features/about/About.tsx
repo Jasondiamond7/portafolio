@@ -83,7 +83,9 @@ export function About() {
                 </div>
                 <div className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400">
                   <span>{cert.year}</span>
-                  {cert.credentialUrl ? (
+                  {cert.inProgress ? (
+                    <span className="font-medium text-accent">En curso</span>
+                  ) : cert.credentialUrl ? (
                     <a
                       href={cert.credentialUrl}
                       target="_blank"

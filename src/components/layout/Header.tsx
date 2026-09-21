@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
+import { ButtonLink } from '@/components/ui/Button'
 import { ThemeToggle } from '@/components/ui/ThemeToggle'
 import { profile } from '@/content/profile'
 import { Container } from './Container'
@@ -8,8 +9,9 @@ const navItems = [
   { href: '#about', label: 'Sobre mí' },
   { href: '#skills', label: 'Habilidades' },
   { href: '#projects', label: 'Proyectos' },
-  { href: '#contact', label: 'Contacto' },
 ]
+
+const contactItem = { href: '#contact', label: 'Contacto' }
 
 function useActiveSection(ids: string[]) {
   const [activeId, setActiveId] = useState<string | null>(null)
@@ -48,7 +50,7 @@ export function Header() {
           {profile.name}
         </a>
 
-        <nav aria-label="Principal" className="hidden gap-8 md:flex">
+        <nav aria-label="Principal" className="hidden items-center gap-8 md:flex">
           {navItems.map((item) => {
             const isActive = activeId === item.href.slice(1)
             return (
@@ -72,6 +74,9 @@ export function Header() {
               </a>
             )
           })}
+          <ButtonLink href={contactItem.href} className="px-3.5 py-1.5">
+            {contactItem.label}
+          </ButtonLink>
         </nav>
 
         <div className="flex items-center gap-2">
@@ -127,6 +132,13 @@ export function Header() {
                   </a>
                 )
               })}
+              <ButtonLink
+                href={contactItem.href}
+                onClick={() => setMenuOpen(false)}
+                className="mt-2 justify-center"
+              >
+                {contactItem.label}
+              </ButtonLink>
             </Container>
           </motion.nav>
         ) : null}

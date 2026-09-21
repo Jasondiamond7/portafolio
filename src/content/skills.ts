@@ -16,6 +16,7 @@ export const skills: Skill[] = [
 
   { name: 'Playwright', category: 'Automatización y Testing' },
   { name: 'Selenium', category: 'Automatización y Testing' },
+  { name: 'Cypress', category: 'Automatización y Testing' },
   { name: 'Postman', category: 'Automatización y Testing' },
   { name: 'Parasoft SOAtest', category: 'Automatización y Testing' },
 
