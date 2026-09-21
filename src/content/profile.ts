@@ -16,5 +16,5 @@ export const profile: Profile = {
     { label: 'GitHub', url: 'https://github.com/Jasondiamond7' },
     { label: 'LinkedIn', url: 'https://www.linkedin.com/in/jayssonlm/' },
   ],
-  resumeUrl: '/resume.pdf',
+  resumeUrl: '/images/jaysson-leon-cv.pdf',
 }
