@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
-import { ButtonLink } from '@/components/ui/Button'
+import { buttonLinkClassName } from '@/components/ui/Button'
 import { ThemeToggle } from '@/components/ui/ThemeToggle'
 import { profile } from '@/content/profile'
 import { Container } from './Container'
@@ -46,17 +47,17 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/80 backdrop-blur dark:border-slate-800 dark:bg-slate-950/80">
       <Container className="flex h-16 items-center justify-between">
-        <a href="#top" className="font-mono text-sm font-semibold text-slate-900 dark:text-white">
+        <Link to="/#top" className="font-mono text-sm font-semibold text-slate-900 dark:text-white">
           {profile.name}
-        </a>
+        </Link>
 
         <nav aria-label="Principal" className="hidden items-center gap-8 md:flex">
           {navItems.map((item) => {
             const isActive = activeId === item.href.slice(1)
             return (
-              <a
+              <Link
                 key={item.href}
-                href={item.href}
+                to={`/${item.href}`}
                 className={
                   isActive
                     ? 'relative text-sm font-medium text-primary'
@@ -71,12 +72,15 @@ export function Header() {
                     transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                   />
                 ) : null}
-              </a>
+              </Link>
             )
           })}
-          <ButtonLink href={contactItem.href} className="px-3.5 py-1.5">
+          <Link
+            to={`/${contactItem.href}`}
+            className={buttonLinkClassName('primary', 'px-3.5 py-1.5')}
+          >
             {contactItem.label}
-          </ButtonLink>
+          </Link>
         </nav>
 
         <div className="flex items-center gap-2">
@@ -118,9 +122,9 @@ export function Header() {
               {navItems.map((item) => {
                 const isActive = activeId === item.href.slice(1)
                 return (
-                  <a
+                  <Link
                     key={item.href}
-                    href={item.href}
+                    to={`/${item.href}`}
                     onClick={() => setMenuOpen(false)}
                     className={
                       isActive
@@ -129,16 +133,16 @@ export function Header() {
                     }
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 )
               })}
-              <ButtonLink
-                href={contactItem.href}
+              <Link
+                to={`/${contactItem.href}`}
                 onClick={() => setMenuOpen(false)}
-                className="mt-2 justify-center"
+                className={buttonLinkClassName('primary', 'mt-2 justify-center')}
               >
                 {contactItem.label}
-              </ButtonLink>
+              </Link>
             </Container>
           </motion.nav>
         ) : null}

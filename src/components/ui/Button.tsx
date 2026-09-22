@@ -18,3 +18,8 @@ type ButtonLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & { variant?: Var
 export function ButtonLink({ variant = 'primary', className, ...props }: ButtonLinkProps) {
   return <a className={cn(base, variants[variant], className)} {...props} />
 }
+
+/** For internal navigation that must go through react-router's `Link` instead of a plain `<a>`. */
+export function buttonLinkClassName(variant: Variant = 'primary', className?: string) {
+  return cn(base, variants[variant], className)
+}
