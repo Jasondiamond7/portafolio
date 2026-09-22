@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { Section } from '@/components/layout/Section'
-import { certifications } from '@/content/certifications'
+import { courses, degrees } from '@/content/certifications'
 import { experience } from '@/content/experience'
 import { profile } from '@/content/profile'
 
@@ -70,9 +70,11 @@ export function About() {
         </div>
 
         <div>
-          <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Certificaciones</h3>
+          <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+            Formación y diplomados
+          </h3>
           <ul className="mt-8 space-y-4">
-            {certifications.map((cert) => (
+            {degrees.map((cert) => (
               <li
                 key={`${cert.name}-${cert.year}`}
                 className="flex flex-col gap-1 rounded-lg border border-slate-200 p-4 sm:flex-row sm:items-center sm:justify-between dark:border-slate-800"
@@ -91,6 +93,39 @@ export function About() {
                       target="_blank"
                       rel="noreferrer"
                       className="text-primary hover:underline"
+                    >
+                      Verificar
+                    </a>
+                  ) : null}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+            Cursos y certificaciones
+          </h3>
+          <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {courses.map((cert) => (
+              <li
+                key={`${cert.name}-${cert.year}`}
+                className="flex flex-col gap-2 rounded-lg border border-slate-200 p-3.5 dark:border-slate-800"
+              >
+                <p className="line-clamp-2 text-sm font-medium text-slate-900 dark:text-white">
+                  {cert.name}
+                </p>
+                <div className="mt-auto flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+                  <span>
+                    {cert.issuer} · {cert.year}
+                  </span>
+                  {cert.credentialUrl ? (
+                    <a
+                      href={cert.credentialUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="font-medium text-primary hover:underline"
                     >
                       Verificar
                     </a>
