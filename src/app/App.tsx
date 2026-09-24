@@ -9,6 +9,11 @@ import { ThemeProvider } from './providers/ThemeProvider'
 export function App() {
   const { pathname, hash } = useLocation()
 
+  // El Header vive fuera del <Outlet>, o sea que aparece en todas las rutas,
+  // pero secciones como #skills o #contact solo existen en el home. Un
+  // <a href="#skills"> normal solo funciona si ya estás parado en esa
+  // página, así que los links del nav navegan a "/#skills" con <Link> y acá
+  // hacemos el scroll a mano una vez que la ruta ya cambió.
   useEffect(() => {
     if (!hash) return
     const target = document.getElementById(hash.slice(1))

@@ -14,6 +14,10 @@ type Colors = {
   accent: string
 }
 
+// Todo esto salió a puro ojo probando en el navegador, no hay una fórmula
+// detrás — son los valores que se veían bien sin saturar la pantalla ni
+// sentirse lento. "Ambient" es la variante tenue que va detrás de las otras
+// secciones, por eso tiene bastante menos nodos que la del Hero.
 const BASE_NODE_COUNT = 55
 const SMALL_VIEWPORT_NODE_COUNT = 28
 const AMBIENT_NODE_COUNT = 16
@@ -120,6 +124,9 @@ export function NeuralNetworkBackground({ intensity = 'active' }: { intensity?: 
     function drawFrame() {
       ctx.clearRect(0, 0, width, height)
 
+      // "glow" es 0-1 y persigue a "target" de a poco (GLOW_EASE) en vez de
+      // saltar directo — así el brillo sube y baja suave cuando el mouse
+      // entra/sale del radio, en lugar de encenderse de golpe.
       for (const node of nodes) {
         const dx = node.x - mouseX
         const dy = node.y - mouseY

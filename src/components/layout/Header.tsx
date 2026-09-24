@@ -23,6 +23,10 @@ function useActiveSection(ids: string[]) {
       .filter((el): el is HTMLElement => el !== null)
     if (elements.length === 0) return undefined
 
+    // El rootMargin negativo achica el área de detección a una franja angosta
+    // cerca del centro vertical de la pantalla, en vez de todo el viewport.
+    // Así la sección activa es la que está "bajo la mirada" del usuario, no
+    // simplemente la primera que asoma por abajo al hacer scroll.
     const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries
