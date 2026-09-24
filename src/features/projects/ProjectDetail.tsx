@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Badge } from '@/components/ui/Badge'
+import { ButtonLink } from '@/components/ui/Button'
 import { Container } from '@/components/layout/Container'
 import type { Project } from '@/content/types'
 import { ProjectMetricsChart } from './ProjectMetricsChart'
@@ -21,6 +22,21 @@ export function ProjectDetail({ project }: { project: Project }) {
           <Badge key={tag}>{tag}</Badge>
         ))}
       </div>
+
+      {project.demoUrl || project.repoUrl ? (
+        <div className="mt-6 flex flex-wrap gap-3">
+          {project.demoUrl ? (
+            <ButtonLink href={project.demoUrl} target="_blank" rel="noreferrer">
+              Ver reporte interactivo ↗
+            </ButtonLink>
+          ) : null}
+          {project.repoUrl ? (
+            <ButtonLink href={project.repoUrl} target="_blank" rel="noreferrer" variant="secondary">
+              Ver código en GitHub ↗
+            </ButtonLink>
+          ) : null}
+        </div>
+      ) : null}
 
       {project.media && project.media.length > 0 ? (
         <div className="mt-8 space-y-6">

@@ -7,61 +7,76 @@ import type { Project } from './types'
 export const projects: Project[] = [
   {
     slug: 'framework-pruebas-ia',
-    title: 'Framework de Automatización de Pruebas asistido por IA',
+    title: 'Framework de Automatización E2E con Playwright, BDD y generación de tests desde Jira',
     summary:
-      'Suite de pruebas end-to-end con Playwright y Selenium, potenciada con un agente de IA vía MCP que genera y mantiene casos de prueba automáticamente.',
+      'Suite E2E en Playwright + TypeScript con reportes visuales en Allure (video de cada corrida incluido) y un generador que lee tarjetas de Jira y arma automáticamente los escenarios en Gherkin/BDD.',
     problem:
-      'Los equipos de QA dedicaban demasiado tiempo a escribir y mantener casos de prueba manuales, con baja cobertura sobre los flujos más críticos del producto.',
+      'Escribir y mantener casos de prueba a mano es lento, y la trazabilidad entre lo que pide una tarjeta ' +
+      'de Jira y lo que realmente queda automatizado se pierde fácil: nadie sabe con certeza qué está cubierto.',
     approach:
-      'Diseñé un framework de pruebas E2E en Python con Playwright y Selenium, y lo conecté a un servidor MCP ' +
-      'para que un agente de IA pudiera generar, priorizar y actualizar casos de prueba a partir de los flujos ' +
-      'reales de la aplicación, en lugar de mantenerlos a mano.',
+      'Construí un framework E2E con Playwright y TypeScript sobre Page Object Model, con Allure como ' +
+      'reportería (captura y video automático de cada paso) y una capa BDD con playwright-bdd para escribir ' +
+      'los flujos en Gherkin. Lo conecté además a la API REST de Jira: el generador toma una tarjeta, lee los ' +
+      'casos de prueba vinculados a ella y arma el archivo .feature junto con los stubs de step definitions, ' +
+      'respetando los pasos Given/When/Then que ya vienen escritos en la tarjeta.',
     outcome:
-      'La cobertura de flujos críticos pasó de ser prácticamente inexistente a un 85%, y el tiempo dedicado ' +
-      'a mantener pruebas rotas bajó cerca de un 30% al delegar esa tarea al agente.',
-    tags: ['Playwright', 'Selenium', 'Python', 'MCP'],
+      'El generador elimina el trabajo de transcribir a mano cada tarjeta a código, y el estado del ticket ' +
+      'se actualiza solo al terminar la corrida — pasa al estado configurado si el test pasó, o se agrega un ' +
+      'comentario con el detalle del error si falló — así el equipo ve en la propia tarjeta de Jira qué quedó cubierto.',
+    tags: ['Playwright', 'Allure', 'BDD/Gherkin', 'Jira API', 'TypeScript', 'MCP'],
     metrics: [
-      { label: 'Cobertura de flujos críticos', value: 85, unit: '%' },
-      { label: 'Reducción de mantenimiento', value: 30, unit: '%' },
+      { label: 'Tests E2E automatizados', value: 51 },
+      { label: 'Navegadores soportados', value: 3 },
     ],
-    repoUrl: 'https://github.com/tu-usuario/framework-pruebas-ia',
+    repoUrl: 'https://github.com/Jasondiamond7/playwrightproject',
+    demoUrl: 'https://jasondiamond7.github.io/playwrightproject/',
     featured: true,
     media: [
       {
-        type: 'video',
-        src: '/videos/projects/allure-report-demo.mp4',
-        poster: '/images/projects/allure-report-poster.jpg',
+        type: 'image',
+        src: '/images/projects/allure-report-demoqa.png',
+        alt: 'Reporte de Allure mostrando la suite de pruebas sobre DemoQA, con video de ejecución embebido',
         caption:
-          'TODO: describe qué se ve en el video (ej. corrida de la suite y recorrido por el reporte de Allure).',
+          'Reporte de Allure: suites organizadas por dominio (alerts, bookstore, elements, forms, widgets), con video completo de cada corrida. Link abajo para explorarlo interactivo.',
       },
     ],
     narrative: [
-      'El equipo de QA venía creciendo más rápido que su capacidad de escribir pruebas: cada release nuevo ' +
-        'sumaba flujos sin cobertura y los casos existentes se volvían obsoletos apenas cambiaba la interfaz.',
-      'En vez de sumar más gente escribiendo pruebas a mano, integré un agente de IA que consulta el estado ' +
-        'real de la aplicación a través de un servidor MCP y propone, actualiza y prioriza los casos de prueba, ' +
-        'dejando al equipo enfocado en revisar y validar en vez de escribir desde cero.',
+      'El framework nació como práctica personal sobre demoqa.com, pero está armado como si fuera un ' +
+        'proyecto de equipo real: Page Objects, fixtures compartidas, reportes en Allure y una capa BDD en ' +
+        'Gherkin para que cualquiera pueda leer un escenario sin saber TypeScript.',
+      'Lo que más valor le agregó fue la integración con Jira: en vez de copiar a mano cada criterio de ' +
+        'aceptación al código, el generador lee la tarjeta y arma el .feature y los stubs de steps respetando ' +
+        'lo que el analista ya escribió. El MCP de Playwright ayuda a explorar la app y confirmar selectores ' +
+        'durante el desarrollo; la consulta a Jira y la ejecución en CI usan la API REST porque es más estable y auditable.',
     ],
     methodology: [
       {
         title: 'Diseño del framework',
         detail:
-          'Page Objects reutilizables en Playwright y Selenium, con fixtures compartidas y ejecución en paralelo para mantener el feedback rápido.',
+          'Page Objects reutilizables por dominio (alerts, forms, widgets, bookstore) con una BasePage que centraliza helpers y toma screenshot automático en cada paso.',
       },
       {
-        title: 'Integración con MCP',
+        title: 'Capa BDD',
         detail:
-          'Un servidor MCP expone los flujos de la aplicación y el historial de fallos como herramientas, para que el agente de IA decida qué casos generar o actualizar.',
+          'playwright-bdd traduce archivos .feature en Gherkin a specs de Playwright sin tocar los tests tradicionales — ambas capas conviven en el mismo proyecto.',
       },
       {
-        title: 'Despliegue',
+        title: 'Generación desde Jira',
         detail:
-          'La suite corre en contenedores Docker dentro de un pipeline de CI, con los resultados publicados apenas termina cada corrida.',
+          'Un script en TypeScript consulta la API REST de Jira, toma los casos de prueba vinculados a una tarjeta y genera el .feature más los stubs de step definitions, dejando los pasos manuales existentes intactos.',
+      },
+      {
+        title: 'Reportería',
+        detail:
+          'Allure agrupa los resultados por Epic → Feature → Story, con video completo de cada corrida y clasificación automática de fallos (timeout, assertion, red).',
       },
     ],
     technicalNotes: [
-      'La suite completa corre en Docker sobre un droplet de Digital Ocean, administrado por SSH.',
-      'Todo caso generado por el agente pasa por una revisión humana antes de entrar a la suite principal.',
+      'Soporta ejecución en Chromium, Firefox y WebKit, además de corridas en la nube vía BrowserStack.',
+      'Al terminar una corrida vinculada a una tarjeta de Jira (tag @PROJ-XXX), el estado del ticket se ' +
+        'actualiza solo: pasa al estado configurado si el test pasó, o se agrega un comentario con el detalle si falló.',
+      'La consulta a Jira y la ejecución en CI usan la API REST; el MCP de Playwright se usa solo en ' +
+        'desarrollo, para explorar la app y confirmar selectores.',
     ],
   },
   {
