@@ -35,9 +35,9 @@ export const projects: Project[] = [
       {
         type: 'image',
         src: '/images/projects/allure-report-demoqa.png',
-        alt: 'Reporte de Allure mostrando la suite de pruebas sobre DemoQA, con video de ejecución embebido',
+        alt: 'Árbol de suites del reporte de Allure, organizadas por dominio (alerts, bookstore, elements, forms, widgets)',
         caption:
-          'Reporte de Allure: suites organizadas por dominio (alerts, bookstore, elements, forms, widgets), con video completo de cada corrida. Link abajo para explorarlo interactivo.',
+          'Suites del reporte de Allure organizadas por dominio. El reporte completo incluye video de cada corrida — link abajo para explorarlo interactivo.',
       },
     ],
     narrative: [
