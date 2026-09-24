@@ -20,10 +20,12 @@ export function About() {
           />
         </div>
         <p className="max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg dark:text-slate-400">
-          Llevo más de 5 años construyendo software: empecé levantando datos y automatizando
-          procesos, seguí por desarrollo frontend y backend con IA aplicada, y hoy me dedico a la
-          automatización de calidad, llevando ese mismo rigor hacia Data Science, Machine Learning e
-          IA.
+          Construyo, automatizo y mejoro software. Más de 5 años de experiencia creando soluciones
+          tecnológicas, desde la automatización de procesos y el análisis de datos hasta el
+          desarrollo frontend y backend con IA. Hoy enfoco mi experiencia en automatización y
+          calidad de software, explorando y desarrollando soluciones en Data Science, Machine
+          Learning e IA. Mi enfoque combina tecnología, análisis y mejora continua para transformar
+          procesos complejos en soluciones más eficientes, confiables e inteligentes.
         </p>
       </div>
 
