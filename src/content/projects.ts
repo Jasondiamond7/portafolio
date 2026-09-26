@@ -79,6 +79,7 @@ export const projects: Project[] = [
   {
     slug: 'modelo-rendimiento-kiwi-chimbarongo',
     title: 'Modelo Predictivo de Rendimiento y Punto de Equilibrio en un Huerto de Kiwi',
+    credential: 'Tesis — Diplomado en Data Science UC',
     summary:
       'Panel de datos climáticos, satelitales y productivos de un huerto de kiwi Hayward en Chimbarongo, con EDA completo y diseño de un modelo predictivo de rendimiento y punto de equilibrio económico. Proyecto grupal del Diplomado en Data Science UC.',
     problem:
@@ -108,6 +109,10 @@ export const projects: Project[] = [
     notebookUrl: '/images/projects/datascience/kiwi-chimbarongo-eda.ipynb',
     reportUrl: '/images/projects/datascience/informe-1-kiwi-chimbarongo.pdf',
     featured: true,
+    coverImage: {
+      src: '/images/projects/kiwi-cover.svg',
+      alt: 'Diplomado en Data Science UC — Tesis: Rendimiento de Kiwi Hayward en Chimbarongo, con las cifras clave del EDA',
+    },
     media: [
       {
         type: 'image',

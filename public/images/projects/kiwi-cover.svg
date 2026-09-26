@@ -1,0 +1,73 @@
+<svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diplomado en Data Science UC — Rendimiento de Kiwi Hayward, Chimbarongo">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#042f2e" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <radialGradient id="glow" cx="82%" cy="18%" r="55%">
+      <stop offset="0%" stop-color="#14b8a6" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#14b8a6" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="fleshGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#6ea832" />
+      <stop offset="100%" stop-color="#a3d158" />
+    </radialGradient>
+  </defs>
+
+  <rect width="1280" height="720" fill="url(#bg)" />
+  <rect width="1280" height="720" fill="url(#glow)" />
+
+  <!-- Kiwi cross-section illustration, bleeding off the top-right corner -->
+  <g transform="translate(1130 175)">
+    <circle r="155" fill="#6b4423" />
+    <circle r="136" fill="#f4efd8" />
+    <circle r="124" fill="url(#fleshGrad)" />
+
+    <!-- seeds + radiating starburst lines -->
+    <g>
+      <g transform="rotate(0)"><line x1="0" y1="-35" x2="0" y2="-122" stroke="#f4efd8" stroke-width="1.4" opacity="0.3" /><ellipse cx="0" cy="-85" rx="3.2" ry="6.2" fill="#1c1c1c" /></g>
+      <g transform="rotate(30)"><line x1="0" y1="-35" x2="0" y2="-122" stroke="#f4efd8" stroke-width="1.4" opacity="0.3" /><ellipse cx="0" cy="-85" rx="3.2" ry="6.2" fill="#1c1c1c" /></g>
+      <g transform="rotate(60)"><line x1="0" y1="-35" x2="0" y2="-122" stroke="#f4efd8" stroke-width="1.4" opacity="0.3" /><ellipse cx="0" cy="-85" rx="3.2" ry="6.2" fill="#1c1c1c" /></g>
+      <g transform="rotate(90)"><line x1="0" y1="-35" x2="0" y2="-122" stroke="#f4efd8" stroke-width="1.4" opacity="0.3" /><ellipse cx="0" cy="-85" rx="3.2" ry="6.2" fill="#1c1c1c" /></g>
+      <g transform="rotate(120)"><line x1="0" y1="-35" x2="0" y2="-122" stroke="#f4efd8" stroke-width="1.4" opacity="0.3" /><ellipse cx="0" cy="-85" rx="3.2" ry="6.2" fill="#1c1c1c" /></g>
+      <g transform="rotate(150)"><line x1="0" y1="-35" x2="0" y2="-122" stroke="#f4efd8" stroke-width="1.4" opacity="0.3" /><ellipse cx="0" cy="-85" rx="3.2" ry="6.2" fill="#1c1c1c" /></g>
+      <g transform="rotate(180)"><line x1="0" y1="-35" x2="0" y2="-122" stroke="#f4efd8" stroke-width="1.4" opacity="0.3" /><ellipse cx="0" cy="-85" rx="3.2" ry="6.2" fill="#1c1c1c" /></g>
+      <g transform="rotate(210)"><line x1="0" y1="-35" x2="0" y2="-122" stroke="#f4efd8" stroke-width="1.4" opacity="0.3" /><ellipse cx="0" cy="-85" rx="3.2" ry="6.2" fill="#1c1c1c" /></g>
+      <g transform="rotate(240)"><line x1="0" y1="-35" x2="0" y2="-122" stroke="#f4efd8" stroke-width="1.4" opacity="0.3" /><ellipse cx="0" cy="-85" rx="3.2" ry="6.2" fill="#1c1c1c" /></g>
+      <g transform="rotate(270)"><line x1="0" y1="-35" x2="0" y2="-122" stroke="#f4efd8" stroke-width="1.4" opacity="0.3" /><ellipse cx="0" cy="-85" rx="3.2" ry="6.2" fill="#1c1c1c" /></g>
+      <g transform="rotate(300)"><line x1="0" y1="-35" x2="0" y2="-122" stroke="#f4efd8" stroke-width="1.4" opacity="0.3" /><ellipse cx="0" cy="-85" rx="3.2" ry="6.2" fill="#1c1c1c" /></g>
+      <g transform="rotate(330)"><line x1="0" y1="-35" x2="0" y2="-122" stroke="#f4efd8" stroke-width="1.4" opacity="0.3" /><ellipse cx="0" cy="-85" rx="3.2" ry="6.2" fill="#1c1c1c" /></g>
+    </g>
+
+    <circle r="34" fill="#f4efd8" />
+    <circle r="34" fill="none" stroke="#e2dcc0" stroke-width="1.5" />
+  </g>
+
+  <!-- Eyebrow -->
+  <text x="64" y="118" font-family="Inter, sans-serif" font-size="25" font-weight="700" letter-spacing="3" fill="#fbbf24">
+    DIPLOMADO EN DATA SCIENCE UC · TESIS
+  </text>
+
+  <!-- Title -->
+  <text x="64" y="192" font-family="Inter, sans-serif" font-size="50" font-weight="800" fill="#ffffff">
+    Rendimiento de Kiwi Hayward
+  </text>
+  <text x="64" y="246" font-family="Inter, sans-serif" font-size="30" font-weight="500" fill="#5eead4">
+    Chimbarongo, O'Higgins — clima, satélite y costos integrados
+  </text>
+
+  <!-- Stat cards -->
+  <g font-family="Inter, sans-serif">
+    <rect x="64" y="460" width="350" height="172" rx="16" fill="#ffffff" fill-opacity="0.07" stroke="#14b8a6" stroke-opacity="0.4" />
+    <text x="94" y="540" font-size="54" font-weight="800" fill="#5eead4">112</text>
+    <text x="94" y="580" font-size="22" fill="#e2e8f0">registros cuartel-temporada</text>
+
+    <rect x="464" y="460" width="350" height="172" rx="16" fill="#ffffff" fill-opacity="0.07" stroke="#f59e0b" stroke-opacity="0.45" />
+    <text x="494" y="540" font-size="54" font-weight="800" fill="#fbbf24">r = 0,67</text>
+    <text x="494" y="580" font-size="22" fill="#e2e8f0">canopia ↔ rendimiento</text>
+
+    <rect x="864" y="460" width="350" height="172" rx="16" fill="#ffffff" fill-opacity="0.07" stroke="#14b8a6" stroke-opacity="0.4" />
+    <text x="894" y="540" font-size="54" font-weight="800" fill="#5eead4">6,9 ton/ha</text>
+    <text x="894" y="580" font-size="22" fill="#e2e8f0">punto de equilibrio</text>
+  </g>
+</svg>

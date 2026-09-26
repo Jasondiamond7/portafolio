@@ -5,7 +5,16 @@ import { GitHubIcon } from '@/components/ui/icons'
 import type { Project } from '@/content/types'
 
 export function ProjectCard({ project, index = 0 }: { project: Project; index?: number }) {
-  const cover = project.media?.[0]
+  const firstMedia = project.media?.[0]
+  const cover = project.coverImage
+    ? { src: project.coverImage.src, alt: project.coverImage.alt, isVideo: false }
+    : firstMedia
+      ? {
+          src: firstMedia.type === 'video' ? firstMedia.poster : firstMedia.src,
+          alt: firstMedia.type === 'video' ? project.title : firstMedia.alt,
+          isVideo: firstMedia.type === 'video',
+        }
+      : null
 
   return (
     <motion.article
@@ -21,11 +30,11 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
           className="group relative block aspect-video overflow-hidden bg-slate-100 dark:bg-slate-900"
         >
           <img
-            src={cover.type === 'video' ? cover.poster : cover.src}
-            alt={cover.type === 'video' ? project.title : cover.alt}
+            src={cover.src}
+            alt={cover.alt}
             className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
           />
-          {cover.type === 'video' ? (
+          {cover.isVideo ? (
             <span className="absolute inset-0 flex items-center justify-center bg-slate-900/20 transition-colors duration-300 group-hover:bg-slate-900/30">
               <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/90 shadow-lg transition-transform duration-300 group-hover:scale-110 dark:bg-slate-950/90">
                 <svg viewBox="0 0 24 24" className="ml-1 h-6 w-6 fill-primary">

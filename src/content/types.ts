@@ -25,8 +25,9 @@ export type ProjectMethodologyStep = {
 
 /**
  * Visual proof for a project: a demo/report video, or a static chart image
- * exported straight from a notebook. The first entry doubles as the card's
- * cover thumbnail; all entries render in the project's detail page.
+ * exported straight from a notebook. Renders only in the project's detail
+ * page. Without a `coverImage`, the card thumbnail falls back to the first
+ * entry here.
  */
 export type ProjectMedia =
   | { type: 'video'; src: string; poster?: string; caption?: string }
@@ -46,6 +47,10 @@ export type Project = {
   notebookUrl?: string
   /** Link to a written report (PDF) backing the project, when there's no repo to point to instead. */
   reportUrl?: string
+  /** Shown as a highlighted badge when the project is backed by a formal credential, e.g. a diploma thesis. */
+  credential?: string
+  /** Designed cover thumbnail for the project card. Falls back to media[0] when omitted. */
+  coverImage?: { src: string; alt: string }
   featured: boolean
   /** Long-form paragraphs for the detail page. Optional — omit to skip the section. */
   narrative?: string[]

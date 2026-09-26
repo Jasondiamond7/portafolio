@@ -12,7 +12,13 @@ export function ProjectDetail({ project }: { project: Project }) {
         ← Volver a proyectos
       </Link>
 
-      <h1 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
+      {project.credential ? (
+        <span className="mt-4 inline-block rounded-full bg-accent px-3 py-1 text-xs font-semibold text-white">
+          {project.credential}
+        </span>
+      ) : null}
+
+      <h1 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
         {project.title}
       </h1>
       <p className="mt-3 max-w-2xl text-lg text-slate-600 dark:text-slate-400">{project.summary}</p>
