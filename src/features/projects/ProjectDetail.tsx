@@ -8,12 +8,12 @@ import { ProjectMetricsChart } from './ProjectMetricsChart'
 export function ProjectDetail({ project }: { project: Project }) {
   return (
     <Container className="py-16 sm:py-24">
-      <Link to="/#projects" className="text-sm text-primary hover:underline">
+      <Link to="/#projects" className="block text-sm text-primary hover:underline">
         ← Volver a proyectos
       </Link>
 
       {project.credential ? (
-        <span className="mt-4 inline-block rounded-full bg-accent px-3 py-1 text-xs font-semibold text-white">
+        <span className="mt-4 block w-fit rounded-full bg-accent px-3 py-1 text-xs font-semibold text-white">
           {project.credential}
         </span>
       ) : null}
