@@ -27,6 +27,7 @@ export const projects: Project[] = [
     ],
     repoUrl: 'https://github.com/Jasondiamond7/playwrightproject',
     demoUrl: 'https://jasondiamond7.github.io/playwrightproject/',
+    background: 'automation',
     featured: true,
     media: [
       {
@@ -108,6 +109,7 @@ export const projects: Project[] = [
     ],
     notebookUrl: '/images/projects/datascience/kiwi-chimbarongo-eda.ipynb',
     reportUrl: '/images/projects/datascience/informe-1-kiwi-chimbarongo.pdf',
+    background: 'data-science',
     featured: true,
     coverImage: {
       src: '/images/projects/kiwi-cover.svg',

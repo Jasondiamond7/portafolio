@@ -51,6 +51,8 @@ export type Project = {
   credential?: string
   /** Designed cover thumbnail for the project card. Falls back to media[0] when omitted. */
   coverImage?: { src: string; alt: string }
+  /** Ambient animated background on the detail page — picks the motif that fits the project. */
+  background?: 'data-science' | 'automation'
   featured: boolean
   /** Long-form paragraphs for the detail page. Optional — omit to skip the section. */
   narrative?: string[]
