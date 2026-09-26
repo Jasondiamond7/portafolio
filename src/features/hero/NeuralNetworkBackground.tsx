@@ -22,6 +22,12 @@ const BASE_NODE_COUNT = 55
 const SMALL_VIEWPORT_NODE_COUNT = 28
 const AMBIENT_NODE_COUNT = 16
 const AMBIENT_SMALL_VIEWPORT_NODE_COUNT = 10
+// AMBIENT_NODE_COUNT is tuned for a section roughly this tall. A page like
+// the project detail view stacks many sections into one much taller
+// container, so we scale the count up with height — otherwise the same 16
+// dots spread over 4x the area just disappear.
+const AMBIENT_REFERENCE_HEIGHT = 800
+const AMBIENT_MAX_NODE_COUNT = 260
 const SMALL_VIEWPORT_WIDTH = 640
 const CONNECTION_DISTANCE = 140
 const MOUSE_RADIUS = 160
@@ -64,14 +70,21 @@ function hexToRgba(hex: string, alpha: number): string {
 type Intensity = 'active' | 'ambient'
 
 function createNodes(width: number, height: number, intensity: Intensity): NetworkNode[] {
-  const count =
-    intensity === 'ambient'
-      ? width < SMALL_VIEWPORT_WIDTH
-        ? AMBIENT_SMALL_VIEWPORT_NODE_COUNT
-        : AMBIENT_NODE_COUNT
-      : width < SMALL_VIEWPORT_WIDTH
-        ? SMALL_VIEWPORT_NODE_COUNT
-        : BASE_NODE_COUNT
+  let count: number
+  if (intensity === 'ambient') {
+    const base =
+      width < SMALL_VIEWPORT_WIDTH ? AMBIENT_SMALL_VIEWPORT_NODE_COUNT : AMBIENT_NODE_COUNT
+    // Grows faster than linear past the reference height, so a page several
+    // times taller than a normal section (e.g. the project detail view)
+    // gets proportionally denser instead of just thinning out further.
+    const heightScale = Math.max(
+      1,
+      1 + (4 * (height - AMBIENT_REFERENCE_HEIGHT)) / AMBIENT_REFERENCE_HEIGHT,
+    )
+    count = Math.min(AMBIENT_MAX_NODE_COUNT, Math.round(base * heightScale))
+  } else {
+    count = width < SMALL_VIEWPORT_WIDTH ? SMALL_VIEWPORT_NODE_COUNT : BASE_NODE_COUNT
+  }
   const nodes: NetworkNode[] = []
   for (let i = 0; i < count; i += 1) {
     nodes.push({
