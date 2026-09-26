@@ -44,6 +44,8 @@ export type Project = {
   repoUrl?: string
   demoUrl?: string
   notebookUrl?: string
+  /** Link to a written report (PDF) backing the project, when there's no repo to point to instead. */
+  reportUrl?: string
   featured: boolean
   /** Long-form paragraphs for the detail page. Optional — omit to skip the section. */
   narrative?: string[]

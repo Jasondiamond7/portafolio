@@ -23,7 +23,7 @@ export function ProjectDetail({ project }: { project: Project }) {
         ))}
       </div>
 
-      {project.demoUrl || project.repoUrl ? (
+      {project.demoUrl || project.repoUrl || project.reportUrl || project.notebookUrl ? (
         <div className="mt-6 flex flex-wrap gap-3">
           {project.demoUrl ? (
             <ButtonLink href={project.demoUrl} target="_blank" rel="noreferrer">
@@ -33,6 +33,26 @@ export function ProjectDetail({ project }: { project: Project }) {
           {project.repoUrl ? (
             <ButtonLink href={project.repoUrl} target="_blank" rel="noreferrer" variant="secondary">
               Ver código en GitHub ↗
+            </ButtonLink>
+          ) : null}
+          {project.reportUrl ? (
+            <ButtonLink
+              href={project.reportUrl}
+              target="_blank"
+              rel="noreferrer"
+              variant="secondary"
+            >
+              Ver informe completo (PDF) ↗
+            </ButtonLink>
+          ) : null}
+          {project.notebookUrl ? (
+            <ButtonLink
+              href={project.notebookUrl}
+              target="_blank"
+              rel="noreferrer"
+              variant="secondary"
+            >
+              Descargar notebook (.ipynb) ↗
             </ButtonLink>
           ) : null}
         </div>

@@ -1,9 +1,6 @@
 import type { Project } from './types'
 
-// Ejemplos de portafolio con tu stack real (Playwright, Selenium, Python, SQL, MCP,
-// Docker, Digital Ocean, SSH). Los textos y métricas son ilustrativos — reemplázalos
-// por tus proyectos y números reales cuando los tengas. Mantén la estructura
-// problema/enfoque/resultado — se lee rápido.
+// Proyectos reales. Mantén la estructura problema/enfoque/resultado — se lee rápido.
 export const projects: Project[] = [
   {
     slug: 'framework-pruebas-ia',
@@ -80,61 +77,90 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: 'proyecto-diplomado-data-science',
-    title: 'Proyecto Final — Diplomado en Ciencia de Datos',
-    // TODO: reemplaza summary/problem/approach/outcome con los de tu proyecto real de cierre.
-    summary: 'TODO: resume en una línea qué predices o analizas y con qué datos.',
+    slug: 'modelo-rendimiento-kiwi-chimbarongo',
+    title: 'Modelo Predictivo de Rendimiento y Punto de Equilibrio en un Huerto de Kiwi',
+    summary:
+      'Panel de datos climáticos, satelitales y productivos de un huerto de kiwi Hayward en Chimbarongo, con EDA completo y diseño de un modelo predictivo de rendimiento y punto de equilibrio económico. Proyecto grupal del Diplomado en Data Science UC.',
     problem:
-      'TODO: describe el problema o pregunta de negocio que aborda tu proyecto de diplomado.',
+      'La planificación del huerto se apoyaba solo en promedios históricos: el rendimiento varió hasta un ' +
+      '59% entre temporadas consecutivas sin cambios de manejo que lo explicaran, y el promedio por cuartel ' +
+      'osciló entre 23 y 45 ton/ha, casi el doble entre unidades del mismo huerto. Los costos, además, se ' +
+      'planifican en una carta Gantt anual que no se vincula al rendimiento esperado de cada cuartel.',
     approach:
-      'TODO: describe tu enfoque — el dataset usado, la limpieza/preprocesamiento aplicado y el o los modelos que entrenaste, y por qué los elegiste.',
+      'Con mi equipo integramos cuatro fuentes reales del huerto: registros productivos por cuartel (2019–2026), ' +
+      'series climáticas diarias de la estación INIA de Chimbarongo, una señal satelital normalizada de canopia ' +
+      'por cuartel y la carta Gantt de costos de la temporada. Yo construí el pipeline de datos y el EDA completo ' +
+      'en Python: reestructuré la planilla productiva a un panel cuartel-temporada, calculé horas de frío y ' +
+      'grados-día (bases 7°C y 10°C) con métodos agrometeorológicos estándar al no venir precalculados, agregué ' +
+      'la señal de canopia a nivel de temporada y crucé todo en un panel integrado de 112 filas siguiendo ' +
+      'CRISP-DM, complementado con aseguramiento de calidad de CRISP-ML(Q).',
     outcome:
-      'TODO: reemplaza con el resultado real (tu métrica principal, ej. accuracy, R² o AUC, y qué significa en términos simples).',
-    tags: ['Python', 'Pandas', 'NumPy', 'Scikit-learn', 'Matplotlib'],
+      'El EDA mostró que la canopia media de la temporada es la variable con mayor asociación al rendimiento ' +
+      '(r = 0,67 sobre 77 observaciones), y que el punto de equilibrio actual —6,9 ton/ha— queda muy por debajo ' +
+      'incluso del escenario pesimista histórico (21,9 ton/ha), lo que sugiere margen operativo bajo la ' +
+      'estructura de costos actual. Esta es la Entrega N.°1 (negocio, datos, preparación y EDA); el modelo ' +
+      'predictivo (Ridge/Random Forest/Gradient Boosting) se entrena y valida en la Entrega N.°2.',
+    tags: ['Python', 'Pandas', 'NumPy', 'Matplotlib', 'EDA', 'CRISP-DM'],
     metrics: [
-      { label: 'TODO: métrica principal (ej. Accuracy)', value: 0, unit: '%' },
-      { label: 'TODO: métrica secundaria (ej. F1-score)', value: 0 },
+      { label: 'Correlación canopia–rendimiento (r)', value: 0.67 },
+      { label: 'Punto de equilibrio (ton/ha)', value: 6.9 },
     ],
-    notebookUrl: 'https://nbviewer.org/github/tu-usuario/tu-repo/blob/main/notebook.ipynb',
-    repoUrl: 'https://github.com/tu-usuario/proyecto-diplomado-data-science',
+    notebookUrl: '/images/projects/datascience/kiwi-chimbarongo-eda.ipynb',
+    reportUrl: '/images/projects/datascience/informe-1-kiwi-chimbarongo.pdf',
     featured: true,
     media: [
       {
         type: 'image',
-        src: '/images/projects/ds-diplomado-chart-1.png',
-        alt: 'TODO: describe este gráfico (ej. matriz de correlación entre variables)',
-        caption: 'TODO: título del gráfico 1 (ej. "Matriz de correlación")',
+        src: '/images/projects/kiwi-canopia-rendimiento.png',
+        alt: 'Gráfico de dispersión: canopia media de la temporada vs. rendimiento en ton/ha, coloreado por año de cosecha',
+        caption:
+          'Canopia media de temporada vs. rendimiento (r = 0,67, n = 77): la variable con mayor asociación al rendimiento en el EDA.',
       },
       {
         type: 'image',
-        src: '/images/projects/ds-diplomado-chart-2.png',
-        alt: 'TODO: describe este gráfico (ej. importancia de variables del modelo)',
-        caption: 'TODO: título del gráfico 2 (ej. "Importancia de variables")',
+        src: '/images/projects/kiwi-punto-equilibrio.png',
+        alt: 'Gráfico de punto de equilibrio por hectárea con escenarios pesimista, intermedio y optimista de rendimiento',
+        caption:
+          'Punto de equilibrio (6,9 ton/ha) frente a los escenarios pesimista (21,9), intermedio (33,8) y optimista (47,0 ton/ha) del rendimiento histórico.',
       },
     ],
     narrative: [
-      'TODO: cuenta el contexto del diplomado y por qué elegiste este dataset o problema en particular.',
-      'TODO: cuenta qué fue lo más desafiante del proceso y qué aprendiste.',
+      'El huerto venía planificando la temporada solo con el criterio del equipo técnico y promedios ' +
+        'históricos, sin poder explicar por qué un mismo cuartel rendía 27 ton/ha una temporada y 43 la ' +
+        'siguiente. Con mi equipo —cinco integrantes del Diplomado en Data Science UC, con perfiles de ' +
+        'ingeniería agronómica, agroindustrial y contable— propusimos integrar clima, señal satelital y ' +
+        'registros productivos para evaluar si esa variabilidad se puede explicar y anticipar.',
+      'Como no había un registro fenológico en terreno, tuve que calcular horas de frío y grados-día desde ' +
+        'cero a partir de temperaturas mínimas y máximas diarias, usando una curva horaria sinusoidal estándar ' +
+        'en agrometeorología, validando los resultados contra las cifras del informe antes de usarlos en el panel integrado.',
     ],
     methodology: [
       {
-        title: 'Exploración de datos (EDA)',
+        title: 'Entendimiento del negocio y de los datos (CRISP-DM)',
         detail:
-          'TODO: describe el análisis exploratorio — qué patrones o problemas encontraste en los datos.',
+          'Definimos 9 preguntas de negocio (descriptivas, diagnósticas, predictivas y prescriptivas) y verificamos calidad e integridad de las cuatro fuentes antes de construir nada.',
       },
       {
-        title: 'Preprocesamiento',
-        detail: 'TODO: describe la limpieza, el feature engineering y el manejo de nulos/outliers.',
+        title: 'Preparación de datos',
+        detail:
+          'Reestructuré la planilla productiva (formato ancho, bloques de 4 filas por cuartel) a un panel largo cuartel-temporada, y calculé horas de frío, GDD base 7°C/10°C y métricas de canopia (media, integral, anomalía) por temporada.',
       },
       {
-        title: 'Modelado y evaluación',
+        title: 'Aseguramiento de calidad (CRISP-ML(Q))',
         detail:
-          'TODO: describe qué modelos probaste, cómo los comparaste y por qué elegiste el final.',
+          'Cada fase define un riesgo y su mitigación: corte temporal explícito para evitar fuga de información, validación agrupada por cuartel para el futuro modelo, y monitoreo de error para recalibrar entre temporadas.',
+      },
+      {
+        title: 'Análisis exploratorio y económico',
+        detail:
+          'Estadísticas descriptivas, distribución del rendimiento, matriz de correlaciones y un modelo de punto de equilibrio que separa costos fijos por hectárea de costos variables ligados al volumen cosechado.',
       },
     ],
     technicalNotes: [
-      'TODO: menciona el entorno usado (Jupyter, Google Colab, etc.) y las librerías clave.',
-      'TODO: menciona cualquier limitación conocida del modelo o de los datos.',
+      'Esta es la primera de dos entregas: cubre entendimiento del negocio/datos, preparación y EDA (CRISP-DM ' +
+        'pasos 1–4). El modelo predictivo y su validación temporal se desarrollan en la Entrega N.°2.',
+      'Panel de 112 filas (14 cuarteles × 8 temporadas 2019–2026): 77 con señal de canopia y 56 con clima invernal completo.',
+      'Las horas de frío y los grados-día no venían precalculados en las fuentes originales: se calcularon con métodos agrometeorológicos estándar y se validaron contra las cifras del informe.',
     ],
   },
 ]
